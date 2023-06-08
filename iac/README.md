@@ -31,4 +31,4 @@ aws configure
 #Para atualizar: 
 sudo ./aws/install --bin-dir /usr/local/bin --install-dir /usr/local/aws-cli --update
 ```
-
+Adicionar a poitica: AmazonEC2FullAccess ao usuário de serviço com permissões de criação de instancias.

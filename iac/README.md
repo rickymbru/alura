@@ -32,4 +32,7 @@ aws configure
 #Para atualizar: 
 sudo ./aws/install --bin-dir /usr/local/bin --install-dir /usr/local/aws-cli --update
 ```
-
+Log de debug da inicialização da instancia na AWS
+```
+less /var/log/cloud-init-output.log
+```

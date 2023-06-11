@@ -1,0 +1,2 @@
+[InternetShortcut]
+URL=https://us-west-2.console.aws.amazon.com/ec2/home?region=us-west-2#Instances:v=3;$case=tags:true%5C,client:false;$regex=tags:false%5C,client:false

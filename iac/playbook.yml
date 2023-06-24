@@ -16,3 +16,11 @@
       name:
       - django
       - djangorestframework
+  - name: Iniciando o projeto
+    shell: '. ~/tcc/venv/bin/activate;django-admin startproject setup ~/tcc/'
+  - name: Alterando o hosts
+    ansible.builtin.lineinfile:
+      path: ~/tcc/setup/settings.py
+      regexp: 'ALLOWED_HOSTS'
+      line: 'ALLOWED_HOSTS = ["*"]'
+      backrefs: yes

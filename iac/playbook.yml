@@ -1,7 +1,6 @@
 ---
 - hosts: terraform_ansible
-  user: ubuntu
-  become: true
+  user: ubuntu  
   gather_facts: no
   tasks: 
   - name: Install python3 e virtualenv
@@ -10,3 +9,10 @@
       - python3
       - virtualenv
       update_cache: yes
+    become: true
+  - name: Instalando dependências com pip (Django e Django rest)
+    pip:
+      virtualenv: /home/ubuntu/tcc/venv
+      name:
+      - django
+      - djangorestframework

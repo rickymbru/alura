@@ -1,7 +1,11 @@
 # Introdução
 
 ## Indice
-* [Preparar o ambiente](#Preparar o ambiente)
+* [Preparar o ambiente](#preparar-o-ambiente)
+* [Terraform](#terraform)
+* [Python](#python)
+* [Ansible](#ansible)
+* [AWS](#aws)
 
 ## Preparar o ambiente
 

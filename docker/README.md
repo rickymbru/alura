@@ -48,6 +48,15 @@ projeto app-node [link](https://github.com/danielartine/alura-docker/blob/aula-3
 docker build -t rickymbru/app-node:1.0 .
 docker run -d --name app-node -p 8081:3000 rickymbru/app-node:1.0
 ```
+## Incrementando a imagem
+Parar todas as imagens
+EXPOSE para definir a porta no container
+ARG em tempo de execução do BUILD
+ENV para definir variavel no container
+```
+docker stop $(docker container ls -q)
+docker run -d -p 9091:6000 rickymbru/app-node:1.2
+```
 
 
 

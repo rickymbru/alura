@@ -80,6 +80,19 @@ docker run -it -v $PWD/volume-docker:/app ubuntu bash
 docker run -it -v /home/infra/alura/docker/volume-docker:/app ubuntu bash
 docker run -it --mount type=bind,source=$PWD/volume-docker,target=/app ubuntu bash
 ```
+### 
+Utilizando volumes: Volumes são gerenciados pelo Docker e independem da estrutura de pastas do sistema.
+``` 
+docker run -it -v meu-volume-docker:/app ubuntu bash
+sudo ls /var/lib/docker
+docker run -it --mount source=meu-volume-docker,target=/app ubuntu bash
+```
+### 
+Utilizando tmpfs
+``` 
+docker run -it --tmpfs=/app ubuntu bash
+docker run -it --mount type=tmpfs,target=/app --rm ubuntu bash
+```
 
 
 

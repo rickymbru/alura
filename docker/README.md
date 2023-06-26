@@ -42,13 +42,13 @@ docker images ls
 docker inspect teste
 docker history vimagick/ntopng
 ```
-## Criando a primeira imagem
+### Criando a primeira imagem
 projeto app-node [link](https://github.com/danielartine/alura-docker/blob/aula-3/app-exemplo.zip?raw=true)
 ```
 docker build -t rickymbru/app-node:1.0 .
 docker run -d --name app-node -p 8081:3000 rickymbru/app-node:1.0
 ```
-## Incrementando a imagem
+### Incrementando a imagem
 Parar todas as imagens
 EXPOSE para definir a porta no container
 ARG em tempo de execução do BUILD
@@ -57,7 +57,29 @@ ENV para definir variavel no container
 docker stop $(docker container ls -q)
 docker run -d -p 9091:6000 rickymbru/app-node:1.2
 ```
+### Subindo a imagem para o Docker Hub
+```
+docker tag rickymbru/app-node:1.2 rickymbru/app-node:latest
+docker push rickymbru/app-node
+docker push rickymbru/app-node:1.0
+docker push rickymbru/app-node:1.1
+```
+## Persistindo dados
 
+### O problema de persistir dados
+Apagando todas os containers e imagens
+```
+docker rm $(docker container ls -qa) --force
+docker rmi $(docker images -f "dangling=true" -q)
+```
+### Utilizando bind mounts
+Bind Mount
+``` 
+mkdir volume-docker    
+docker run -it -v $PWD/volume-docker:/app ubuntu bash
+docker run -it -v /home/infra/alura/docker/volume-docker:/app ubuntu bash
+docker run -it --mount type=bind,source=$PWD/volume-docker,target=/app ubuntu bash
+```
 
 
 

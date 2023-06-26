@@ -6,6 +6,9 @@
 - [Os primeiros comandos](#os-primeiros-comandos)
 - [Criando e compreendendo imagens](#criando-e-compreendendo-imagens)
 - [Persistindo dados](#persistindo-dados)
+- [Redes](#redes)
+- [Coordenando containers](#coordenando-containers)
+
 
 ## Conhecendo o Docker?
 ```
@@ -93,6 +96,33 @@ Utilizando tmpfs
 docker run -it --tmpfs=/app ubuntu bash
 docker run -it --mount type=tmpfs,target=/app --rm ubuntu bash
 ```
-
-
+## Redes
+***
+### Conhecendo a rede bridge
+docker0
+``` 
+docker run -it --rm ubuntu bash
+``` 
+### Criando uma rede bridge
+``` 
+docker network create minha-bridge --driver=bridge
+docker run -it --rm --network minha-bridge ubuntu bash
+# apt update && apt install iputils-ping -y
+docker run -it --rm --network minha-bridge --name pong ubuntu bash
+ping pong
+``` 
+### As redes none e host
+A rede host remove o isolamento entre o container e o sistema, enquanto a rede none remove a interface de rede.
+```
+docker run -d --network none ubuntu sleep 1d
+docker run -d --network host aluradocker/app-node:1.0
+```
+### Comunicando aplicação e banco
+```
+docker network create minha-bridge --driver=bridge
+docker run -d --network minha-bridge --name meu-mongo --rm mongo:4.4.6
+docker run -d --network minha-bridge --name alurabooks --rm -p 3000:3000 aluradocker/alura-books:1.0
+http://localhost:3000/seed
+http://localhost:3000/
+```
 

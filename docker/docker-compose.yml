@@ -1,0 +1,22 @@
+version: '3.9'
+services:
+  mongodb:
+    image: mongo:4.4.6
+    container_name: meu-mongo
+    networks:
+      - compose-bridge
+  alura-books:
+    depends_on:
+      - mongodb
+    image: aluradocker/alura-books:1.0
+    container_name: alurabooks
+    ports:
+      - 3000:3000
+    networks:
+      - compose-bridge
+networks:
+  compose-bridge:
+    ipam:
+      driver: default
+      config:
+        - subnet: "192.168.100.0/24"

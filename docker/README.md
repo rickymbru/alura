@@ -125,4 +125,11 @@ docker run -d --network minha-bridge --name alurabooks --rm -p 3000:3000 alurado
 http://localhost:3000/seed
 http://localhost:3000/
 ```
-
+## Coordenando containers
+### Conhecendo o Docker Compose
+Instalando no Linux, [Link](#https://docs.docker.com/compose/install/linux/)
+```
+DOCKER_CONFIG=${DOCKER_CONFIG:-$HOME/.docker}
+mkdir -p $DOCKER_CONFIG/cli-plugins
+curl -SL https://github.com/docker/compose/releases/download/v2.19.0/docker-compose-linux-x86_64 -o $DOCKER_CONFIG/cli-plugins/docker-compose
+```
